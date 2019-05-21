@@ -1,20 +1,26 @@
-# Go Gin Example [![rcard](https://goreportcard.com/badge/github.com/EDDYCJY/go-gin-example)](https://goreportcard.com/report/github.com/EDDYCJY/go-gin-example) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/EDDYCJY/go-gin-example) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EDDYCJY/go-gin-example/master/LICENSE)
+# Go Gin Example
 
-An example of gin contains many useful features
+[![rcard](https://goreportcard.com/badge/github.com/EDDYCJY/go-gin-example)](https://goreportcard.com/report/github.com/EDDYCJY/go-gin-example)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/EDDYCJY/go-gin-example)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EDDYCJY/go-gin-example/master/LICENSE)
 
-[简体中文](https://github.com/EDDYCJY/go-gin-example/blob/master/README_ZH.md)
+An example of gin contains many useful features using docker
+
+forked from [EDDYCJY/go-gin-example](https://github.com/EDDYCJY/go-gin-example)
 
 ## Installation
-```
-$ go get github.com/EDDYCJY/go-gin-example
-```
-
-## How to run
 
 ### Required
 
-- Mysql
-- Redis
+- docker compose
+
+## How to run
+
+```sh
+go get github.com/mberrueta/go-gin-example
+docker-compose up -d
+db/create_db.sh
+```
 
 ### Ready
 
