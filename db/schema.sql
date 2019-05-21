@@ -7,18 +7,18 @@ CREATE DATABASE go_gin_example_db;
 -- Tables
 ----------------------------------------------------------------------
 
-DROP TABLE IF EXISTS blog_article;
-DROP TABLE IF EXISTS blog_auth;
-DROP TABLE IF EXISTS blog_tag;
+DROP TABLE IF EXISTS articles;
+DROP TABLE IF EXISTS auths;
+DROP TABLE IF EXISTS tags;
 
 -- TODO: Pass should be DIGEST!
-CREATE TABLE blog_auth (
+CREATE TABLE auths (
   id                        SERIAL PRIMARY KEY,
   username                  CHARACTER VARYING(50),
   password                  CHARACTER VARYING(50)
 );
 
-CREATE TABLE blog_tag (
+CREATE TABLE tags (
   id                        SERIAL PRIMARY KEY,
   name                      CHARACTER VARYING(100),
   created_on                DATE,
@@ -29,7 +29,7 @@ CREATE TABLE blog_tag (
   state                     INT
 );
 
-CREATE TABLE blog_article
+CREATE TABLE articles
 (
   id                        SERIAL PRIMARY KEY,
   tag_id                    INT,
@@ -43,5 +43,5 @@ CREATE TABLE blog_article
   modified_by               CHARACTER VARYING(100),
   deleted_on                DATE,
   state                     INT,
-  FOREIGN KEY (tag_id) REFERENCES blog_tag(id)
+  FOREIGN KEY (tag_id) REFERENCES tags(id)
 );

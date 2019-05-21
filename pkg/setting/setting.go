@@ -40,12 +40,11 @@ type Server struct {
 var ServerSetting = &Server{}
 
 type Database struct {
-	Type        string
-	User        string
-	Password    string
-	Host        string
-	Name        string
-	TablePrefix string
+	Host     string
+	Port     string
+	Name     string
+	User     string
+	Password string
 }
 
 var DatabaseSetting = &Database{}

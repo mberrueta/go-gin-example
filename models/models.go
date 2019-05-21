@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/setting"
+	"github.com/mberrueta/go-gin-example/pkg/setting"
 	"time"
 )
 
@@ -23,18 +23,21 @@ type Model struct {
 // Setup initializes the database instance
 func Setup() {
 	var err error
-	db, err = gorm.Open(setting.DatabaseSetting.Type, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	connection := fmt.Sprintf("sslmode=disable host=%s port=%s dbname=%s user=%s password=%s",
+		setting.DatabaseSetting.Host,
+		setting.DatabaseSetting.Port,
+		setting.DatabaseSetting.Name,
 		setting.DatabaseSetting.User,
 		setting.DatabaseSetting.Password,
-		setting.DatabaseSetting.Host,
-		setting.DatabaseSetting.Name))
+	)
+	db, err = gorm.Open("postgres", connection)
 
 	if err != nil {
 		log.Fatalf("models.Setup err: %v", err)
 	}
 
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
-		return setting.DatabaseSetting.TablePrefix + defaultTableName
+		return defaultTableName
 	}
 
 	db.SingularTable(true)
